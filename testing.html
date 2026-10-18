@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    /* 1. Main Page Styling */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f3f4f6;
+    }
+
+    .open-btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* 2. The Dark Background Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      display: flex;
+      justify-content: center; /* Centers horizontally */
+      align-items: center;     /* Centers vertically */
+      
+      /* Smooth fade-in setups */
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    /* 3. The Pop-up Box itself */
+    .modal-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+
+      /* Smooth scale up setup */
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+
+    /* 4. The Magic "Active" State (Triggers the Smoothness) */
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal-overlay.active .modal-box {
+      transform: scale(1); /* Scales up smoothly to normal size */
+    }
+
+    .close-btn {
+      margin-top: 15px;
+      padding: 8px 16px;
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Trigger Button -->
+  <button class="open-btn" id="openBtn">Click Me</button>
+
+  <!-- Pop-up Structure -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <h2>Hello! 👋</h2>
+      <p>This is a perfectly centered pop-up window.</p>
+      <button class="close-btn" id="closeBtn">Close</button>
+    </div>
+  </div>
+
+  <!-- JavaScript Behavior -->
+  <script>
+    const openBtn = document.getElementById('openBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    // Add the "active" class to fade and scale it in
+    openBtn.addEventListener('click', () => {
+      modalOverlay.classList.add('active');
+    });
+
+    // Remove the "active" class to hide it
+    closeBtn.addEventListener('click', () => {
+      modalOverlay.classList.remove('active');
+    });
+
+    // Optional: Close the pop-up if they click anywhere on the dark background
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
