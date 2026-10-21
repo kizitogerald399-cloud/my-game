@@ -3,14 +3,18 @@
  const playerChoices = document.querySelector('.player-choice');// where the image for the user will sit
  const gameBoard = document.querySelector('.grid');//the first container with a triangle
  const houseChoice = document.querySelector('.house-choice');// where the image for computer move sits 
-
+const nextbtn = document.getElementById('.next');
+const scoreValue = document.getElementById('scorevalue')
+const reset = document.getElementById('resets')
  const choices = ['rock', 'paper', 'scissors'];
+ let score = 0;
+ let results = '';
 
     choiceButtons.forEach(button => {
    button.addEventListener("click", () => {
      const playerChoice = button.id;
      console.log(playerChoice);
-
+    
      gameBoard.classList.add('hidden');
      result.classList.remove('hidden');
   
@@ -21,27 +25,45 @@
 
    setTimeout(()=>{
   const houseChoices = choices[Math.floor(Math.random()*3)];
-
+  console.log(houseChoices)
+   
   houseChoice.innerHTML = `
-  <div class="buton ${houseChoices}"> <img src="images/icon-${houseChoices}.svg" alt="${houseChoices}">
+  <div class="buton ${houseChoices}"> <img src="images/icon-${houseChoices}.svg" ">
   </div>`;
-    }, 1500);
-   });
-});
+    if (playerChoice==houseChoices){results='Tie'; score=score}
+  else if(playerChoice=='paper' && houseChoice=='rock' || playerChoice=='rock' && houseChoices=='scissors' || playerChoice=='scissors' && houseChoices=='paper'){
+    results = 'Win'; score += 1;
 
+  }else {results='Lose'; score -= 1;}
+
+ 
+  scorevalue.innerHTML = score;
+  console.log(scorevalue.innerHTML);
   
+  function reset(){
+  gameBoard.classList.remove('hidden');
+  result.classList.add('hidden');
+  scorevalue.innerHTML = 0;
+}
+}, 1000);
+    
 
-  /*
-  houseChoice.innerHTML = `
-  <div class="button ${houseChoices}"> <img src="images/icon-${houseChoices}.svg" alt="${houseChoices}">
-  </div>`;
+   });});
 
- playerChoices.innerHTML = `<div class="button ${playerChoice}"> <img src="images/icon-${playerChoice}.svg" alt="${playerChoice}"></div>`; 
-   houseChoice.innerHTML = `<div class="empty-space"></div>`;
-*/
+const houseChoices = choices[Math.floor(Math.random()*3)];
  
+
+
+
+function next(){
+  gameBoard.classList.remove('hidden');
+  result.classList.add('hidden')
+}
+
+
+
  
- const buttonz = document.getElementById('style-btn')
+ const buttonz = document.getElementById('style-btn');
 
 buttonz.addEventListener('click', () => {
   buttonz.classList.toggle('clicked');
@@ -72,8 +94,10 @@ buttonz.addEventListener('click', () => {
  });
  
  
- 
- 
+let resultz='';
+
+
+
  
  
  

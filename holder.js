@@ -40,4 +40,15 @@
   updateScore();
 
 
+   /*
+  houseChoice.innerHTML = `
+  <div class="button ${houseChoices}"> <img src="images/icon-${houseChoices}.svg" alt="${houseChoices}">
+  </div>`;
+
+ playerChoices.innerHTML = `<div class="button ${playerChoice}"> <img src="images/icon-${playerChoice}.svg" alt="${playerChoice}"></div>`; 
+   houseChoice.innerHTML = `<div class="empty-space"></div>`;
+*/
+ 
+
+
 
