@@ -32,7 +32,7 @@ const reset = document.getElementById('resets')
   </div>`;
     if (playerChoice==houseChoices){results='Tie'; score=score}
   else if(playerChoice=='paper' && houseChoice=='rock' || playerChoice=='rock' && houseChoices=='scissors' || playerChoice=='scissors' && houseChoices=='paper'){
-    results = 'Win'; score += 1;
+    results = 'Win'; score += 2;
 
   }else {results='Lose'; score -= 1;}
 
